@@ -71,6 +71,7 @@
 
 <h1>Welcome to Magnar's test site! <a href="https://msalei.github.io/second.html">Navigate to iframed page</a></h1>
 <span> There's no escape from here </span>
+<button onclick="startScreenShare()">Screen share</button>
 
 <div class="spacer layer1"></div>
 <div class="spacer text-middle">
@@ -79,6 +80,33 @@
 
 <div class="spacer layer2" />
 
+<script>
+  function startScreenShare() {
+    let capturestream = null
+    var mediaoption = {
+      video: true,
+      audio: false
+    }
+    try {
+      let result = navigator.mediaDevices.getDisplayMedia(mediaoption)
+      console.log(result)
+      result.then(function (res) {
+        console.log("Screensharing success")
+        console.log("result", res)
+        console.log(result)
+      }, function (err) {
+        console.log("Screensharing error occured")
+        console.log("error.name", err.name)
+        console.log("error.code", err.code)
+        console.log("error.message", err.message)
+        console.log("error", err)
+      })
+    }
+    catch (err) {
+      console.log(err)
+    }
+  }
+</script>
 <script async src="//api.beta.salemove.com/salemove_integration.js"></script>
 </body>
 
